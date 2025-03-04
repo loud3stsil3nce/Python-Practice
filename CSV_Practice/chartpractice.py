@@ -1,4 +1,4 @@
-with open("employeedata.csv") as employee_data:
+with open("CSV_Practice\employeedata.csv") as employee_data:
     employees = {}
     for line in employee_data:
         line = line.replace("\n", "")
