@@ -1,4 +1,5 @@
-n = input('Enter name: ')
+m = int(input(""))
+b = int(input(""))
 
-with open("practice.txt", "a") as file:
-    file.write(f"Hello my name is {n}\n")
+result = (-1*b) / m
+print(result)
