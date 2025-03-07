@@ -35,10 +35,6 @@ def addtask(name, description):
     task = {}
     task[f"{name}"] = description
     ToDo.append(task)
-    todofile = Path(__file__).parent / "todo.txt"
-    with open(todofile, "a") as todofile:    
-        todofile.write(f"{len(ToDo)}. {name}: \n{description}\n")
-    todofile.close()
     cursor.execute("INSERT INTO ToDo (Item, Description, Status) VALUES (%s,%s,%s)", (name, description, "IP"))
     database.commit()
 
