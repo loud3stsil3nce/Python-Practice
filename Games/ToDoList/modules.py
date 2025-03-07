@@ -47,28 +47,14 @@ def viewalltasks():
     rows = cursor.fetchall()
     num = 1
     for row in rows:
-        print(f"{num}. {row[0]}\n{row[1]}\nStatus: {row[2]}\n")
+        print(f"{num}. {row[0]}\n{row[1]}\nStatus: {row[2]}\nTask ID: {row[3]}\n")
         num += 1
         
         
-    
-    #if len(ToDo) == 0:
-        #print("No tasks found")
-    #else:
-        #for task in ToDo:
-            #for key, value in task.items():
-                #print(f"{ToDo.index(task) + 1}. {key}:\n{value}\n")
-     
        
 
 def remove(taskkey):
-    global ToDo
-    ToDo.pop(taskkey - 1)
-         
-    todofile = Path(__file__).parent / "todo.txt"
-    with open(todofile, "w") as todofile:  
-        for task in ToDo:
-            for key, value in task.items():
-                todofile.write(f"{ToDo.index(task) + 1}. {key}:\n{value}\n")
-    todofile.close()
+    cursor.execute("DELETE FROM ToDo WHERE itemID LIKE (%s)", (taskkey,))
+    database.commit()
+    
       
